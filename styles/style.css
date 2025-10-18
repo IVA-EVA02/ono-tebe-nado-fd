@@ -1,1 +1,322 @@
 /* место для вашего кода */
+
+/*Переиспользуемые классы*/
+
+.text-white {
+  color: #fff;
+}
+
+.text-black {
+  color: #000;
+}
+
+.address {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /*Ссылки растянулись во всю ширину родителя за счет того, что стали flex-элементами.*/
+  line-height: 24.3px; /*Используем align-items: flex-start, чтобы ссылки занимали только нужное для их контента пространство.*/
+}
+
+.address-link {
+  white-space: nowrap; /*Убираем перенос символов телефона и почты на другую строку.*/
+}
+
+.overlay {
+  position: absolute;
+  inset: 0; /*Заменяем top=0; left=0;.*/
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0 0 0 / 0.6);
+  z-index: -1; /*Размещаем оверлей под элементами блока.*/
+}
+
+/*Шапка сайта*/
+
+.header {
+  display: grid;
+  grid-template-columns: 1fr min-content 1fr;
+  align-items: center;
+  padding: 92px 50px 96px;
+  font-weight: 400;
+  font-size: 18px;
+  text-underline-offset: 4px; /*Опускаем подчеркивание у ссылок шапки.*/
+}
+
+.header__links-list {
+  display: flex;
+  gap: 32px; /*Подгоняем до макета с 13px на 32px при помощи PerfectPixel.*/
+}
+
+.header__links-list-item {
+  list-style: circle;
+}
+
+.header__links-list-item_no-bullit {
+  list-style-type: none; /*Убираем булит у пункта меню.*/
+}
+
+.header__link_active .header__link {
+  text-decoration: none; /*Убираем подчеркивание у активной ссылки.*/
+}
+
+.header__link {
+  line-height: 100%; /*Свойство со значением 100% берет размер шрифта элемента.*/
+}
+
+.header__logo {
+  display: block;
+  width: 135px; /*Убираем размеры изображения img и делаем ссылку блочной + указываем её ширину.*/
+} /*(подгоням до макета от 148px до 135px через PerfectPixel)*/
+
+.header__address {
+  /*Выравниваем блок с адресом в шапке.*/
+  max-width: 240px; /*Берем ширину из макета.*/
+  justify-self: end;
+}
+
+/*Основной контент сайта*/
+
+/*Секция cover*/
+
+.cover {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /*Создаем столбец из элементов Заголовок и Подзаголовок с кнопкой + отступ между ними.*/
+  position: relative; /*Размещаем оверлей относительно родителя.*/
+  min-height: 757px; /*Убираем у блоков фиксированную высоту, чтобы при добавлении контента он расширялся.*/
+  background-image: url(../images/cover.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin-bottom: 180px;
+  padding: 165px 50px 50px 50px;
+  z-index: 0; /*Размещаем оверлей под элементами блока.*/
+  text-transform: uppercase;
+}
+
+.cover-title {
+  font-weight: 700;
+  font-size: 100px;
+  line-height: 130%; /*Подгоняем до макета от 114.99999999999999% до 130% при помощи PerfectPixel.*/
+  letter-spacing: 0.3em; /*Переводим из фигмы 30% в em=30/100.*/
+}
+
+.aligned-text {
+  display: block;
+}
+
+.aligned-text_left {
+  text-align: left;
+}
+
+.aligned-text_center {
+  text-align: center;
+}
+
+.aligned-text_right {
+  text-align: right;
+}
+
+.no-letter-spacing {
+  letter-spacing: 0; /*Обнуляем межбуквенное расстояние у последней буквы.*/
+}
+
+.cover__description {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cover__description-text {
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 28px;
+  text-align: center;
+  word-spacing: 0.8em;
+}
+
+.letter-spacing-extended {
+  word-spacing: 1.1em; /*Делаем увеличенный межбуквенный интервал, так как запятая забирает часть пространства.*/
+}
+
+.bet-button {
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  background-color: transparent;
+  padding: 15px 32px 11px 31px; /*Подгоняем до макета верхний отступ с 12px до 15px при помощи PerfectPixel.*/
+  border: 1px solid #fff;
+}
+
+/*Секция lots*/
+
+.lots {
+  width: 1052px;
+  margin: 0 24px 120px;
+}
+
+.lots__heading {
+  font-weight: 700;
+  font-size: 40px; /*Убираем свойство line-height: 100%;, так как с макетом лучше совпадает без него.*/
+  text-transform: uppercase;
+  margin: 0 0 27px 40px;
+}
+
+.lots__card-list {
+  display: flex;
+  gap: 25px; /*Создаем отступы между карточками.*/
+  list-style-type: none; /*Полное обнуление стилей списка: ul { list-style: none; margin: 0; padding: 0; }. У нас отступы обнулены в global.css.*/
+  flex-wrap: wrap; /*Создаем перенос карточек на новую строку при добавлении дополнительных.*/
+  margin-bottom: 30px;
+}
+
+.lots__card-list-item {
+  width: 334px;
+  min-height: 596px;
+}
+
+.card-link {
+  height: 100%;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /*Создаем расположение элементов в карточке.*/
+  position: relative; /*Позиционируем оверлей относительно карточки article.*/
+  z-index: 0; /*Размещаем оверлей под элементами блока.*/
+  height: 100%;
+  padding: 48px 40px;
+  background-size: cover;
+  background-position: center;
+}
+
+.card_type_film {
+  background-image: url(../images/card-lot-01.jpg);
+}
+
+.card_type_book {
+  background-image: url(../images/card-lot-02.jpg);
+}
+
+.card_type_picture {
+  background-image: url(../images/card-lot-03.jpg);
+}
+
+.card__title {
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 124%; /*Увеличиваем интервал на четыре процента от данных в Фигма.*/
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-decoration-style: solid;
+  text-underline-offset: 3px; /*Опускаем подчеркивание.*/
+  text-decoration-thickness: 0; /*Делаем подчеркивание тонким.*/
+}
+
+.card__text {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 120%;
+}
+
+.lots__look-more-link {
+  font-weight: 400;
+  font-size: 20px; /*Убираем свойство line-height: 100%;, так как с макетом лучше совпадает без него.*/
+  text-underline-offset: 5px; /*Опускаем подчеркивание.*/
+  margin-left: 40px;
+}
+
+/*Секция about*/
+
+.about {
+  width: 1052px;
+  margin: 0 24px 180px;
+}
+
+.about__column {
+  display: grid;
+  grid-template-columns: 334px 1fr;
+  grid-template-rows: 595px; /*padding: 35px 0px 13px 47px; - не нужно*/
+}
+
+.about__logo {
+  display: flex;
+  justify-content: center;
+  margin-top: 35px;
+  align-items: center;
+  width: 240px;
+  height: 240px;
+  background-color: #000000;
+  border-radius: 50%; /*Задаем для квадратного элемента 50%, чтобы сделать его круглым.*/
+  justify-self: center; /*Задаем выравнивание в грид-столбце по горизонтальному центру.*/
+}
+
+.about__logo-image {
+  width: 148px;
+  height: 114px;
+}
+
+.about_title_text {
+  /*Добавляем класс для создания отступа*/
+  margin: 133px 0 13px 25px;
+}
+
+.about__title {
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 100%;
+  text-transform: uppercase;
+  margin: 3px 0 100px 0;
+}
+
+.about__text {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+/*Подвал сайта*/
+
+.footer {
+  display: grid;
+  grid-template-columns: 1fr 164px 1fr;
+  padding: 0 50px 82px;
+  text-underline-offset: 4px; /*Опускаем подчеркивание у ссылок футера.*/
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.footer_address {
+  max-width: 265px; /*Берем ширину из макета.*/
+}
+
+.footer__menu-list {
+  list-style-type: none;
+  text-align: center;
+}
+
+.footer__menu-link_active .footer__menu-link {
+  text-decoration: none; /*Убираем подчеркивание у активной ссылки.*/
+}
+
+.footer__social-list {
+  display: flex;
+  justify-content: space-between;
+  justify-self: end;
+  gap: 48px;
+  width: 240px;
+  list-style-type: none;
+}
+
+.footer__social-icon {
+  display: block; /*Делаем img блочным элементом, чтобы ссылка не была под img, а стала размером с img.*/
+} /*(Тэг img - изначально строчный (inline) с вертикальным*/
+/*выравниванием по базовой линии (vertical-align: baseline;).*/
+/*Предполагается, что он будет окружен текстом, для текста необходимо место снизу, для "хвостиков"*/
+/*(например, как у буквы "у") -> у картинки появляется отступ снизу. Решить можно установив display: block; для картинки)*/
