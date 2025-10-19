@@ -2,11 +2,11 @@
 
 /*Переиспользуемые классы*/
 
-.text-white {
+.text-light {
   color: #fff;
 }
 
-.text-black {
+.text-dark {
   color: #000;
 }
 
@@ -15,6 +15,7 @@
   flex-direction: column;
   align-items: flex-start; /*Ссылки растянулись во всю ширину родителя за счет того, что стали flex-элементами.*/
   line-height: 24.3px; /*Используем align-items: flex-start, чтобы ссылки занимали только нужное для их контента пространство.*/
+  font-style: normal; /*Убран наклон текста font-style: italic;, который был задан браузером*/
 }
 
 .address-link {
@@ -36,7 +37,7 @@
   display: grid;
   grid-template-columns: 1fr min-content 1fr;
   align-items: center;
-  padding: 92px 50px 96px;
+  padding: 98px 50px 96px; /*Подгоняем до макета с 92px до 98px при помощи PerfectPixel.*/
   font-weight: 400;
   font-size: 18px;
   text-underline-offset: 4px; /*Опускаем подчеркивание у ссылок шапки.*/
@@ -55,7 +56,7 @@
   list-style-type: none; /*Убираем булит у пункта меню.*/
 }
 
-.header__link_active .header__link {
+.header__links-list-item_active .header__link {
   text-decoration: none; /*Убираем подчеркивание у активной ссылки.*/
 }
 
@@ -97,7 +98,6 @@
 .cover-title {
   font-weight: 700;
   font-size: 100px;
-  line-height: 130%; /*Подгоняем до макета от 114.99999999999999% до 130% при помощи PerfectPixel.*/
   letter-spacing: 0.3em; /*Переводим из фигмы 30% в em=30/100.*/
 }
 
@@ -110,11 +110,13 @@
 }
 
 .aligned-text_center {
-  text-align: center;
+  text-indent: 330px; /*Подгоняем до макета вместо text-align: center;*/
+  line-height: 154%; /*Подгоняем до макета при помощи PerfectPixel.*/
 }
 
 .aligned-text_right {
   text-align: right;
+  line-height: 117%; /*Подгоняем до макета при помощи PerfectPixel.*/
 }
 
 .no-letter-spacing {
@@ -147,8 +149,8 @@
   text-transform: uppercase;
   background-color: transparent;
   padding: 15px 32px 11px 31px; /*Подгоняем до макета верхний отступ с 12px до 15px при помощи PerfectPixel.*/
-  border: 1px solid #fff;
-}
+  border: 1px solid currentColor; /*Используем значение currentColor вместо #fff.*/
+} /*Это ключевое слово автоматически наследует текущий цвет текста элемента.*/
 
 /*Секция lots*/
 
@@ -233,13 +235,13 @@
 
 .about {
   width: 1052px;
-  margin: 0 24px 180px;
+  margin: 0 24px 167px; /*Подгоняем до макета нижний отступ с 180px как в Фигма до 167px при помощи PerfectPixel.*/
 }
 
 .about__column {
-  display: grid;
-  grid-template-columns: 334px 1fr;
-  grid-template-rows: 595px; /*padding: 35px 0px 13px 47px; - не нужно*/
+  /*grid-template-rows: 595px; - не нужно, так как жесткая установка высоты строки мешает контенту*/
+  display: grid; /*естественно размещаться в контейнере при его увеличении/сокращении.*/
+  grid-template-columns: 334px 1fr; /*padding: 35px 0px 13px 47px; - не нужно*/
 }
 
 .about__logo {
@@ -261,7 +263,7 @@
 
 .about_title_text {
   /*Добавляем класс для создания отступа*/
-  margin: 133px 0 13px 25px;
+  margin: 140px 0 13px 25px; /*Подгоняем до макета верхний отступ с 133px до 140px при помощи PerfectPixel.*/
 }
 
 .about__title {
@@ -286,7 +288,7 @@
 .footer {
   display: grid;
   grid-template-columns: 1fr 164px 1fr;
-  padding: 0 50px 82px;
+  padding: 0 50px 74px; /*Подгоняем до макета нижний отступ с 82px до 74px при помощи PerfectPixel.*/
   text-underline-offset: 4px; /*Опускаем подчеркивание у ссылок футера.*/
   font-weight: 400;
   font-size: 18px;
@@ -301,7 +303,7 @@
   text-align: center;
 }
 
-.footer__menu-link_active .footer__menu-link {
+.footer__menu-list-item_active .footer__menu-link {
   text-decoration: none; /*Убираем подчеркивание у активной ссылки.*/
 }
 
